@@ -1,0 +1,21 @@
+class ransomNote {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        Map<Character,Integer>Magazine=new HashMap<>();
+        for(int i=0;i<magazine.length();i++){
+            if(Magazine.containsKey(magazine.charAt(i))){
+                Magazine.put(magazine.charAt(i),Magazine.get(magazine.charAt(i))+1);
+            }
+            else
+            Magazine.put(magazine.charAt(i),1);
+        }
+        for(int i=0; i< ransomNote.length();i++){
+            char ch=ransomNote.charAt(i);
+            if( Magazine.containsKey(ch) && Magazine.get(ch)>0){
+                Magazine.put(ch, Magazine.get(ch) - 1);
+            }
+            else return false;
+        }
+        return true;
+              
+    }
+}
